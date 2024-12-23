@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Building2, Car, Plane, Map, Ship, Sparkles } from "lucide-react";
+import React from "react";
 
 // Define a type for the menu keys
 type MenuItemKey = "hotels" | "car-rentals" | "flights" | "trips" | "cruises" | "activities";
@@ -26,7 +27,7 @@ export function BottomNavigation({ onItemClick }: BottomNavigationProps) {
     },
   };
 
-  const menuItems: { name: string; icon: any; color: string; key: MenuItemKey }[] = [
+  const menuItems: { name: string; icon: React.ElementType; color: string; key: MenuItemKey }[] = [
     { name: "HOTELS", icon: Building2, color: "bg-orange-500", key: "hotels" },
     { name: "CAR RENTALS", icon: Car, color: "bg-white", key: "car-rentals" },
     { name: "FLIGHTS", icon: Plane, color: "bg-white", key: "flights" },
@@ -61,7 +62,7 @@ export function BottomNavigation({ onItemClick }: BottomNavigationProps) {
                 className={`cursor-pointer transition-all rounded-xl p-2 text-gray-700 ${item.color}`}
               >
                 <div className="flex flex-col items-center gap-1">
-                  <item.icon className="w-6 h-6" />
+                  <item.icon className="w-6 h-6" /> {/* Ensure icon supports className */}
                   <span className="text-xs font-medium">{item.name}</span>
                 </div>
               </motion.div>
